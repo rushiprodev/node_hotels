@@ -1,6 +1,0 @@
-#Ignore this module directory
-
-node_modules/
-.env
-
-#Other enteries...
