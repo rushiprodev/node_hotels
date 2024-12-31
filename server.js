@@ -8,6 +8,8 @@ const bodyParser = require('body-parser'); // Import body-parser
 app.use(bodyParser.json());
 
 
+console.log('hello ji');
+
 
 const port = 3000;
 
