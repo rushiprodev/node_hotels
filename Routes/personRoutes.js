@@ -55,9 +55,11 @@ Router.delete("/:id", async (req, res) => {
     console.log("Person deleted");
     res.status(200).json({ message: "Person deleted successfully" });
   } catch (err) {
+    console.log('error');
     console.error("Error occurred during deletion", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
+//commit is added to the storyy 
 module.exports = Router;
