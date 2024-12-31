@@ -1,28 +1,27 @@
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
+require('dotenv').config();
+const mongoURL=process.env.MONGODB_URL;
 
-//define the mongodb connection url
-const mongourl= 'mongodb://127.0.0.1:27017/hotels'; //replace my databse with your database
+// Define the MongoDB connection URL
 
 
-//setup mongoose connection
+// Setup mongoose connection
+mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect(mongourl)
+// Get the default connection
+const db = mongoose.connection; // Established bridge between mongoose and Node.js
 
-//get the default connection
-//mongoose maintains a default connection object representing the mongodb connection
-const db=mongoose.connection;  //established bridge between mongoose and nodejs
-
-//define event listener for database connection
-db.on('connected',() => {
-    console.log('connected to the mongodb server');
+// Define event listeners for database connection
+db.on('connected', () => {
+    console.log('Connected to the MongoDB server');
 });
 
-db.on('error',(err)=>{
-    console.log("error is genereted ")
+db.on('error', (err) => {
+    console.error("Error connecting to MongoDB:", err);
 });
 
-db.on("disconnect",()=>{
-    console.log("mongodb disconnected");
+db.on("disconnected", () => {
+    console.log("MongoDB disconnected");
 });
 
-module.exports=db;
+module.exports = db;
