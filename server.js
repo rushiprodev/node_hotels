@@ -21,6 +21,10 @@ const personRoutes=require("./Routes/personRoutes");
 const menuItemRoutes=require("./Routes/menuRoutes");
 
 //use the routes
+app.get('/',(req,res)=>{
+  return res.send("Happy New Year !!!")
+})
+
 app.use('/person',personRoutes);
 app.use('/',menuItemRoutes);
 
